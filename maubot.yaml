@@ -1,0 +1,10 @@
+id: sergevictor.eu.maubot.bard
+version: 0.99.99
+modules:
+  - bard
+main_class: BardPlugin
+config: true
+extra_files:
+  - base-config.yaml
+dependencies:
+  - bardapi

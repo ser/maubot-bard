@@ -1,0 +1,14 @@
+# MANDATORY!
+access_key: somestring
+
+# Your bot's name, for reference. Leave blank to use mxid localpart
+# set this to a specific value if the bot's mxid localpart does not
+# match their display nick, as clients tend to use the display nick in
+# message bodies when using tab-completion.
+# This is used as the trigger to get your bots attention in rooms with
+# more than one user in them.
+name: ''
+
+# Allowed users who can make calls to the Bard(TM).
+# An empty list means everyone is allowed.
+allowed_users: []
