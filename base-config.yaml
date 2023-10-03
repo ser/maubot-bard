@@ -12,3 +12,6 @@ name: ''
 # Allowed users who can make calls to the Bard(TM).
 # An empty list means everyone is allowed.
 allowed_users: []
+
+# If not empty, bot will serve only rooms on the list
+rooms: []

@@ -14,6 +14,7 @@ class Config(BaseProxyConfig):
         helper.copy("access_key")
         helper.copy("allowed_users")
         helper.copy("name")
+        helper.copy("rooms")
 
 class BardPlugin(Plugin):
 
@@ -21,10 +22,17 @@ class BardPlugin(Plugin):
         await super().start()
         self.config.load_and_update()
         self.name = self.config['name'] if self.config['name'] else self.client.parse_user_id(self.client.mxid)[0]
+        self.rooms = self.config['rooms'] if self.config['rooms'] else None
         self.log.debug(f"Bard(TM) plugin started with bot name: {self.name}")
 
     @event.on(EventType.ROOM_MESSAGE)
     async def on_message(self, event: MessageEvent) -> None:
+
+        # If there are rooms specified in config, serve only these rooms
+        if self.rooms:
+            if event.room_id not in self.rooms:
+                self.log.debug(f"Current room {event.room_id} is not listed in {self.rooms} so I ignore it.")
+                return
 
         # If the bot sent the message or another command was issued, just pass
         if event.sender == self.client.mxid or event.content.body.startswith('!'):

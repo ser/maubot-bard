@@ -1,5 +1,5 @@
 id: sergevictor.eu.maubot.bard
-version: 0.99.99
+version: 0.99.100
 modules:
   - bard
 main_class: BardPlugin
